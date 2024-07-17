@@ -5,6 +5,13 @@ class Registration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailregistercontroller = TextEditingController();
+    TextEditingController passregistercontroller = TextEditingController();
+    TextEditingController conformpassregistercontroller =
+        TextEditingController();
+    final emailformkey = GlobalKey<FormState>();
+    final passformkey = GlobalKey<FormState>();
+    final confronpassformkey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: Colors.white,
@@ -22,54 +29,70 @@ class Registration extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: "email adress",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+            Form(
+              key: emailformkey,
+              child: TextFormField(
+                controller: emailregistercontroller,
+                decoration: InputDecoration(
+                  hintText: "email adress",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "enter a valid username";
+                  } else if (value.contains("@")) {
+                    return "enter valid email";
+                  } else {
+                    return null;
+                  }
+                },
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty || !value.contains("@")) {
-                  return "enter a valid username";
-                } else {}
-              },
             ),
             SizedBox(
               height: 25,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                suffixIcon: Icon(Icons.remove_red_eye),
-                hintText: 'password',
-                hintStyle: TextStyle(),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+            Form(
+              key: passformkey,
+              child: TextFormField(
+                controller: passregistercontroller,
+                decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.remove_red_eye),
+                  hintText: 'password',
+                  hintStyle: TextStyle(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
                   ),
                 ),
+                validator: (value) {
+                  "";
+                },
               ),
-              validator: (value) {
-                "";
-              },
             ),
             SizedBox(
               height: 20,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                suffixIcon: Icon(Icons.remove_red_eye),
-                hintText: 'conform password',
-                hintStyle: TextStyle(),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+            Form(
+              key: confronpassformkey,
+              child: TextFormField(
+                controller: conformpassregistercontroller,
+                decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.remove_red_eye),
+                  hintText: 'conform password',
+                  hintStyle: TextStyle(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
                   ),
                 ),
+                validator: (value) {
+                  "";
+                },
               ),
-              validator: (value) {
-                "";
-              },
             ),
             SizedBox(
               height: 20,

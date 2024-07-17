@@ -1,3 +1,4 @@
+import 'package:exam_ui/view/homescreen/homescreen.dart';
 import 'package:exam_ui/view/registration/registration.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.white,
       body: Expanded(
@@ -69,7 +71,7 @@ class Login extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Registration(),
+                          builder: (context) => Homescreen(),
                         ),
                       );
                     },
